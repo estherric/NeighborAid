@@ -8,6 +8,15 @@ export type ResourceView = SavedResource & {
   county: string
   verified?: boolean | null
   lastVerified: string
+
+  // Contact information for real resources
+  website?: string
+  phone?: string
+
+  // Optional information
+  hours?: string
+  address?: string
+  accessibility?: string
 }
 
 export function ResourceCard({ resource, index }: { resource: ResourceView; index: number }) {
