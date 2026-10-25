@@ -1,0 +1,3 @@
+export default function CommunityPartnersPage() {
+  return <section className="page-wrap future-page"><span className="future-tag">FUTURE EXPANSION</span><h1>LOCAL HELP,<br /><em>VERIFIED TOGETHER.</em></h1><div className="future-grid"><article><b>NONPROFITS</b><p>Claim and maintain organization profiles, service availability, and verified contact details.</p></article><article><b>VOLUNTEERS</b><p>Support resource verification and local outreach without accessing the private circumstances of help seekers.</p></article></div><p className="guardrail">This area is intentionally separate from the help-seeking experience. Personal assessment information will not be shared with community partners.</p></section>
+}
