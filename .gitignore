@@ -147,3 +147,30 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+NeighborAid.zip
+.figma/
+
+# Local project archives
+NeighborAid.zip
+NeighborAid(*).zip
+
+# Private credentials and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Operating system files
+.DS_Store
+
+# Temporary Figma review project
+figma-review/
+
+# Downloaded project archives
+NeighborAid.zip
+NeighborAid(*).zip
