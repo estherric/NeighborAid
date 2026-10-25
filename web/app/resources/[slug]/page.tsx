@@ -1,33 +1,30 @@
-import { SaveButton } from '@/components/SaveButton'
-import { getResources } from '@/lib/resources'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
+import { SaveButton } from "@/components/SaveButton";
+import { getResources } from "@/lib/resources";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
-export const instant = false
+export const instant = false;
 
 export async function generateStaticParams() {
-  return [
-    { slug: 'demo-housing-assistance' },
-    { slug: 'demo-food-assistance' },
-    { slug: 'demo-financial-assistance' },
-    { slug: 'demo-health-safety' },
-  ]
+  const resources = await getResources();
+
+  return resources.map((resource) => ({
+    slug: resource.slug,
+  }));
 }
 
 export default async function ResourceDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params
-  const resources = await getResources()
+  const { slug } = await params;
+  const resources = await getResources();
 
-  const resource = resources.find(
-    (item) => item.slug === slug
-  )
+  const resource = resources.find((item) => item.slug === slug);
 
   if (!resource) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -38,7 +35,7 @@ export default async function ResourceDetailPage({
 
       <div className="detail-heading">
         <span className="kicker">
-          {resource.category.replace('-', ' / ')} · {resource.county}
+          {resource.category.replace("-", " / ")} · {resource.county}
         </span>
         <h1>{resource.name}</h1>
         <p>{resource.organization}</p>
@@ -46,12 +43,47 @@ export default async function ResourceDetailPage({
 
       <div className="detail-grid">
         <article className="action-card">
-          <span className="kicker">DEMO RESOURCE — NOT VERIFIED</span>
+          <span className="kicker">
+            {resource.verified
+              ? "VERIFIED RESOURCE"
+              : resource.slug.startsWith("demo-")
+                ? "DEMO RESOURCE — NOT VERIFIED"
+                : "RESOURCE — DETAILS NOT YET VERIFIED"}
+          </span>
+
           <h2>{resource.nextStep}</h2>
-          <p>
-            This is a fictional demonstration listing,
-            not a verified assistance program.
-          </p>
+
+          {resource.slug.startsWith("demo-") ? (
+            <p>
+              This is a fictional demonstration listing, not a real assistance
+              program.
+            </p>
+          ) : (
+            <p>
+              Contact the organization to confirm current services, eligibility,
+              and availability.
+            </p>
+          )}
+
+          <div className="contact-actions">
+            {resource.phone && (
+              <a className="button primary" href={`tel:${resource.phone}`}>
+                Call {resource.phone}
+              </a>
+            )}
+
+            {resource.website && (
+              <a
+                className="button secondary"
+                href={resource.website}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit official website ↗
+              </a>
+            )}
+          </div>
+
           <SaveButton resource={resource} />
         </article>
 
@@ -63,9 +95,9 @@ export default async function ResourceDetailPage({
           <p>{resource.whyHelpful}</p>
 
           <p className="eligibility-note">
-            This listing is for demonstration purposes only.
-            Real program availability and eligibility must
-            be confirmed before providing recommendations.
+            {resource.slug.startsWith("demo-")
+              ? "This is fictional demonstration data, not a real assistance program."
+              : "Confirm current program eligibility, availability, and requirements directly with the organization."}
           </p>
         </article>
 
@@ -82,11 +114,13 @@ export default async function ResourceDetailPage({
             </div>
             <div>
               <dt>Verification</dt>
-              <dd>Not yet verified</dd>
+              <dd>
+                {resource.verified ? resource.lastVerified : "Not yet verified"}
+              </dd>
             </div>
           </dl>
         </aside>
       </div>
     </section>
-  )
+  );
 }

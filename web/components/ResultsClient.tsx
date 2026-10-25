@@ -36,7 +36,7 @@ export function ResultsClient({ resources }: { resources: ResourceView[] }) {
       <div className="results-summary">
         <div>
           <span className="kicker">
-            Orange County · Verified records
+            Orange County · Community resource listings
           </span>
 
           <h1>
@@ -47,7 +47,7 @@ export function ResultsClient({ resources }: { resources: ResourceView[] }) {
         </div>
 
         <p>
-          Explore verified community resources and choose what fits your needs.
+          Explore community resources and choose what fits your needs.
         </p>
       </div>
 
