@@ -23,7 +23,9 @@ export function ResourceCard({ resource, index }: { resource: ResourceView; inde
         <div><dt>What to do next</dt><dd>{resource.nextStep}</dd></div>
       </dl>
       <div className="card-footer">
-        <Link href={`/resources/${resource.slug}`}>View contact details →</Link>
+        <Link href={`/resources/${resource.slug}`}>
+          View resource details →
+        </Link>
         <SaveButton resource={resource} />
       </div>
     </article>
