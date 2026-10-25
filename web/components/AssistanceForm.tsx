@@ -59,7 +59,7 @@ export function AssistanceForm() {
 
       <div className="follow-up">
         <label htmlFor="zip">
-          ZIP code <small>Used to narrow down nearby resources</small>
+          ZIP code <small>Optional — location filtering coming soon</small>
         </label>
 
         <input
@@ -84,7 +84,7 @@ export function AssistanceForm() {
       </div>
 
       <button className="button primary" type="submit">
-        Find verified support →
+        Find community support →
       </button>
     </form>
   )
