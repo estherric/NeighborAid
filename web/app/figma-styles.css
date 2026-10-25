@@ -27,3 +27,213 @@ main{min-height:calc(100vh - 170px)}.home-hero,.mission,.how-grid,.home-band,.pa
 .skip-link:focus {
   top: 12px;
 }
+
+/* Saved resource action buttons */
+
+.saved-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.remove-saved {
+  appearance: none;
+  background: transparent;
+  border: 1px solid currentColor;
+  padding: 10px 14px;
+  color: inherit;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.remove-saved:hover {
+  background: #e84d2f;
+  border-color: #e84d2f;
+  color: white;
+}
+
+.remove-saved:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .saved-actions {
+    justify-content: flex-start;
+  }
+}
+
+/* Saved Resources — action layout override */
+
+.saved-list .saved-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.saved-list .saved-actions a {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.saved-list .saved-actions .remove-saved {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1px solid #222;
+  background: transparent;
+  color: #222;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.saved-list .saved-actions .remove-saved:hover {
+  background: #e84d2f;
+  color: white;
+  border-color: #e84d2f;
+}
+
+@media (max-width: 640px) {
+  .saved-list .saved-actions {
+    justify-content: flex-start;
+  }
+}
+
+/* Mobile Navigation Fix */
+
+@media (max-width: 768px) {
+  .site-header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 18px 20px;
+  }
+
+  .site-header .wordmark {
+    align-self: flex-start;
+  }
+
+  .site-header nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 18px;
+    width: 100%;
+  }
+
+  .site-header nav a {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  .site-header .location {
+    display: none;
+  }
+}
+
+/* NeighborAid — Mobile MVP Fixes */
+
+@media (max-width: 768px) {
+
+  /* Show navigation below the logo */
+  .site-header {
+    height: auto;
+    min-height: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 18px 20px;
+  }
+
+  .site-header nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 8px;
+  }
+
+  .site-header nav a {
+    display: block;
+    padding: 10px 6px;
+    border: 1px solid var(--line);
+    text-align: center;
+    font-size: 10px;
+    line-height: 1.4;
+    white-space: normal;
+  }
+
+  .site-header .location {
+    display: none;
+  }
+
+  /* Prevent long headings from overflowing */
+  .assessment .page-heading h1 {
+    font-size: clamp(36px, 9vw, 48px);
+    letter-spacing: -2px;
+    line-height: 1;
+    overflow-wrap: anywhere;
+  }
+
+  /* Allow assessment text and form to shrink */
+  .assessment,
+  .assessment > *,
+  .chat-panel,
+  .chat-title,
+  .bot-message {
+    min-width: 0;
+  }
+
+  .assessment .page-heading p,
+  .chat-title span,
+  .bot-message {
+    overflow-wrap: anywhere;
+  }
+
+  .chat-title {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Give filter buttons room to remain visible */
+  .filter-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+  }
+
+  .filter-row button {
+    min-width: 0;
+    min-height: 44px;
+    padding: 12px 6px;
+    border-bottom: 1px dashed var(--line);
+    white-space: normal;
+  }
+
+  /* Keep resource cards within the screen */
+  .result-card,
+  .result-card h2,
+  .saved-list article,
+  .saved-list article > div {
+    min-width: 0;
+  }
+
+  .result-card h2,
+  .saved-list h2 {
+    overflow-wrap: anywhere;
+  }
+
+  .saved-list .saved-actions {
+    grid-column: 2;
+    justify-content: flex-start;
+  }
+}

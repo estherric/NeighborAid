@@ -11,12 +11,12 @@ const categories = [
 export default function AssistancePage() {
   return (
     <section className="page-wrap assessment">
-      <div className="page-heading"><span className="kicker">01 — Private needs assessment</span><h1>ASK<br /><em>NeighboRaid.</em></h1><p>Describe only what you’re comfortable sharing. Please do not include Social Security numbers, immigration documents, medical records, or account numbers.</p></div>
+      <div className="page-heading"><span className="kicker">01 — Private needs assessment</span><h1>ASK<br /><strong>Ask NeighborAid</strong></h1><p>Describe only what you’re comfortable sharing. Please do not include Social Security numbers, immigration documents, medical records, or account numbers.</p></div>
       <div className="chat-panel">
-        <div className="chat-title"><strong>Ask NeighboRaid</strong><span>Uses verified database records only</span></div>
+        <div className="chat-title"><strong>Ask NeighborAid</strong><span>Browse local community resources</span></div>
         <div className="bot-message">What’s happening, and what kind of help would make the biggest difference right now?</div>
         <AssistanceForm />
-        <p className="guardrail">NeighboRaid does not determine eligibility. Programs make final eligibility decisions using their current rules.</p>
+        <p className="guardrail">NeighborAid does not determine eligibility. Programs make final eligibility decisions using their current rules.</p>
       </div>
       <div className="category-path">
         <span className="kicker">OR CHOOSE A CATEGORY</span>
